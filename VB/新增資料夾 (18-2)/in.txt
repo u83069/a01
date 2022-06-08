@@ -1,0 +1,3 @@
+********ElseIf*Mid(Text1,*i,*1)*=*"C"*Then*
+************Text2*=*Text2*&*"G"*
+

@@ -1,0 +1,3 @@
+*****For*i*=*1*To*Label3*-*3*
+********X1*=*(Image1.Left*+*Image1.Width*/*2)*+****Cos(*i*/*(Label3*-*3)**)*
+********Y1*=*(Image1.Top*+*Image1.Height*/*2)*+****Sin(*i*/*(Label3*-*3)**)*

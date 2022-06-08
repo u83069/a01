@@ -1,0 +1,32 @@
+  AT
+ T--A
+C----G
+ G--C
+  AT
+  AT
+ G--C
+C----G
+ T--A
+  AT
+  CG
+ G--C
+A----T
+ T--A
+  CG
+  CG
+ G--C
+G----C
+ G--C
+  GC
+  TA
+ T--A
+T----A
+ T--A
+  AT
+  TA
+ T--A
+T----A
+ C--G
+  CG
+  GC
+ G--C

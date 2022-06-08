@@ -1,0 +1,8 @@
+*********m*=*i*Mod*10*
+********If*m*=*0*Then*
+************Command2(i).Top*=*Command2(0).Top*
+********ElseIf*m*<=*5*Then*
+************Command2(i).Top*=*Command2(i*-*1).Top*+*Command2(i*-*1).Height*
+********Else*
+************Command2(i).Top*=*Command2(i*-*1).Top*-*Command2(i*-*1).Height*
+********End*If*

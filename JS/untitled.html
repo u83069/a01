@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>無標題文件</title>
+<script>
+
+function demo() {
+	alert(text1.value.charAt(0)); 
+	alert(text1.value.charCodeAt(0)); 
+	alert(text1.value.charCodeAt(0).toString(16));
+	text3.value="";//兩個16進位表示一個字母，所以要進2取2
+	for (var i=0;i<text2.value.length;i+=2)  
+		text3.value=text3.value + String.fromCharCode(parseInt(text2.value.substr(i,2),16));
+}
+
+var Acolor="rgb(0, 255, 255)";
+var Tcolor="rgb(0, 255, 0)";
+var Ccolor="rgb(255, 255, 0)";
+var Gcolor="rgb(255, 0, 0)";
+
+window.onload = function(){	 
+
+}
+//第一題，mRNA序列
+function ex1() {
+	text2.value="";
+	for (var i=0;i<text1.value.length;i++) 
+		if (text1.value.charAt(i)=="A")
+			text2.value=text2.value +"U";
+		else if (text1.value.charAt(i)=="T")
+			text2.value=text2.value +"A";
+		else if (text1.value.charAt(i)=="C")
+			text2.value=text2.value +"G";
+		else if (text1.value.charAt(i)=="G")
+			text2.value=text2.value +"C";
+
+}
+
+//第二題，tRNA序列
+function ex2() {
+	text3.value="";
+	for (var i=0;i<text2.value.length;i++)  {
+		if (i%3==0)
+			text3.value=text3.value +"(";
+		if (text2.value.charAt(i)=="A")
+			text3.value=text3.value +"U";
+		else if (text2.value.charAt(i)=="U")
+			text3.value=text3.value +"A";
+		else if (text2.value.charAt(i)=="C")
+			text3.value=text3.value +"G";
+		else if (text2.value.charAt(i)=="G")
+			text3.value=text3.value +"C";
+		if (i%3==2)
+			text3.value=text3.value +")";
+	}
+}
+
+//第三題，雙軌DNA
+function ex3() {
+	document.getElementById("form1").innerHTML=""; //清掉DNA第一軌
+	for(var i=0;i<text1.value.length;i++ ){  //產生DNA第一軌
+		var input = document.createElement("input");
+		input.type = "button"; //宣告成按鈕，因為上面要顯示數據，故使用button替代image物件
+		input.id= "button";//同名宣告，以便後續可以用button[i]去存取
+		input.style.fontSize="10px";  
+		input.style.width="50px";  
+		input.style.height="50px";
+		input.value=text1.value.charAt(i);
+		if (input.value=="A")
+			input.style.backgroundColor=Acolor; 
+		else if (input.value=="T")
+			input.style.backgroundColor=Tcolor; 
+		else if (input.value=="C")
+			input.style.backgroundColor=Ccolor; 
+		else if (input.value=="G")
+			input.style.backgroundColor=Gcolor; 
+		document.getElementById("form1").appendChild(input);  
+	}
+	document.getElementById("form2").innerHTML="";//清掉DNA第二軌
+	for(var i=0;i<text1.value.length;i++ ){  //產生DNA第二軌
+		var input = document.createElement("input");
+		input.type = "button"; 
+		input.id= "button2";  //注意這裡要跟上面不一樣
+		input.style.fontSize="10px"; 
+		input.style.width="50px";  
+		input.style.height="50px";
+		if (text1.value.charAt(i)=="A")  //求配對鹼基
+			input.value="T";
+		else if (text1.value.charAt(i)=="T")
+			input.value="A";
+		else if (text1.value.charAt(i)=="C")
+			input.value="G";
+		else if (text1.value.charAt(i)=="G")
+			input.value="C";
+		
+		if (input.value=="A")
+			input.style.backgroundColor=Acolor; 
+		else if (input.value=="T")
+			input.style.backgroundColor=Tcolor; 
+		else if (input.value=="C")
+			input.style.backgroundColor=Ccolor; 
+		else if (input.value=="G")
+			input.style.backgroundColor=Gcolor; 
+		document.getElementById("form2").appendChild(input);  
+	}
+		
+}
+
+//第四題，螺旋DNA
+function ex4() {
+	ex3();
+	for(var i=0;i<text1.value.length;i++ ){
+		button[i].style.position="absolute";//第一軌，absolute設定絕對位置，水瓶座標left，垂直座標top
+		button[i].style.top="500px";
+		button[i].style.left=i*50+"px";
+		button2[i].style.position="absolute";//第二軌
+		button2[i].style.top="750px";
+		button2[i].style.left=i*50+"px";
+	}
+	
+	for(var i=0;i<text1.value.length;i++ ){
+		var j=i % 10;
+		if (j==0)      //第一軌上升下行
+			button[i].style.top="500px";
+		else if (j<=5)
+			button[i].style.top=parseInt(button[i-1].style.top)+parseInt(button[i-1].style.height)+"px";
+		else
+			button[i].style.top=parseInt(button[i-1].style.top)-parseInt(button[i-1].style.height)+"px";
+	
+		if (j==0)  //第二軌上升下行
+			button2[i].style.top="750px";
+		else if (j<=5)
+			button2[i].style.top=parseInt(button2[i-1].style.top)-parseInt(button2[i-1].style.height)+"px";
+		else
+			button2[i].style.top=parseInt(button2[i-1].style.top)+parseInt(button2[i-1].style.height)+"px";
+	}	
+}
+
+
+</script>
+</head>
+<body>
+  <table width="879" border="1">
+    <tr>
+      <td width="316" align="left" valign="top"><p>DNA序列
+          <input type="button" id="demo" value="demo" onclick="demo();"/>
+      </p>
+        <p>
+          <textarea name="text1" cols="30" id="text1">ATCGATCGATCGATCGAATTCCGG</textarea>
+        </p>
+                  <p>
+                    <input type="button" id="ex1" value="ex1" onclick="ex1();"/>
+                    mRNA序列</p>
+                  <p>
+                    <textarea name="text2" cols="30" id="text2"></textarea>
+                  </p>
+        <p>
+          <input type="button" id="ex2" value="ex2" onclick="ex2();"/>
+          tRNA序列
+        </p>
+        <p>
+  <textarea name="text3" cols="30" id="text3"></textarea>
+        </p>
+        <p>
+          <input type="button" id="ex3" value="ex3" onclick="ex3();" />
+        雙軌DNA</p>
+        <p>
+          
+          <input type="button" id="ex4" value="ex4" onclick="ex4();"  />
+        螺旋DNA
+      </p>
+      </p></td>
+      <td width="547"><p> <!--得分：
+  <label id="info">0</label>
+--><img src="http://clipart-library.com/images/qiBXxnGkT.jpg" alt="DNA Strands,Science and Medicine Icon | Webby Dzine | Download " width="451" height="360"/></p></td>
+    </tr>
+  </table>
+<div id="form1" style="height:200px; border-bottom:thick; border-bottom-color:#6F0">abc</div>
+
+<div id="form2" style="height:200px; border-bottom:thick; border-bottom-color:#6F0">def</div>
+
+</body>
+</html>
+

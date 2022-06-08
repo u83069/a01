@@ -1,0 +1,2 @@
+*******=*Split(*Text2*,*Text1)*
+****Label3*=*UBound(*)*

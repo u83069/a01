@@ -1,0 +1,3 @@
+*****For*i*=*1*To*Len(Text1)**
+********Line*(Command2(i).Left*+*Command2(i).Width*/*2,*Command2(i).Top*+*Command2(i).Height)-(Command3(i).Left*+*Command3(i).Width*/*2,*Command3(i).Top),*vbRed*
+****Next*

@@ -1,0 +1,2 @@
+********Text2.SelStart*=*p*-*1*
+********Text2.SelLength*=*Len(Text1**
